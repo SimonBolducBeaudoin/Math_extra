@@ -1,7 +1,7 @@
 NAME = histograms
 PYLIB_EXT = $(if $(filter $(OS),Windows_NT),.pyd,.so)
 TARGET_STATIC = lib$(NAME).a
-TARGET_PYLIB = ../Python/$(NAME)$(PYLIB_EXT)
+TARGET_PYLIB = ../../Python_2_7/$(NAME)$(PYLIB_EXT)
 
 MATH_EXTRA = ../Math_extra
 

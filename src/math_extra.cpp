@@ -22,3 +22,5 @@ bool isPerfectSquare(long double x)
   // If square root is an integer 
   return ((sr - floor(sr)) == 0); 
 } 
+
+	
