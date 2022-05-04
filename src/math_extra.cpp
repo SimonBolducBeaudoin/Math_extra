@@ -23,4 +23,5 @@ bool isPerfectSquare(long double x)
   return ((sr - floor(sr)) == 0); 
 } 
 
+// void linear_vertical_least_square():
 	

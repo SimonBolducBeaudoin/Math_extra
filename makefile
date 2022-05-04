@@ -5,12 +5,11 @@ TARGET_PYLIB = ../../Python_2_7/$(NAME)$(PYLIB_EXT)
 
 MATH_EXTRA = ../Math_extra
 
-IDIR = includes
 ODIR = obj
 LDIR = lib
 SDIR = src
 
-EXTERNAL_INCLUDES = -I$(MATH_EXTRA)/$(IDIR)
+EXTERNAL_INCLUDES = -I$(MATH_EXTRA)/$(SDIR)
 
 SRC  = $(wildcard $(SDIR)/*.cpp)
 OBJ  = $(patsubst $(SDIR)/%.cpp,$(ODIR)/%.o,$(SRC))
