@@ -4,12 +4,18 @@
 
 set(PROJECT_NAME Math_extra)                    
 set(LIB_NAME math_extra)                        
-set(EXTERNAL_INCLUDES ./src) 
+set(EXTERNAL_INCLUDES )
+set(STATIC_LINKS ) 
 set(COMPILE_OPTIONS_ADD )  
 set(LINKS )
 
 cmake_minimum_required(VERSION 3.15)
 project(${PROJECT_NAME} ) # Needs to be ontop
+
+# Prepending the absolute path
+list(TRANSFORM EXTERNAL_INCLUDES PREPEND "${PROJECT_SOURCE_DIR}/../" REGEX "^(.*)$" )
+list(TRANSFORM STATIC_LINKS PREPEND "${PROJECT_SOURCE_DIR}/../" REGEX "^(.*)$" )
+list(APPEND LINKS ${STATIC_LINKS})
 
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose Release or Debug" FORCE)
@@ -26,8 +32,6 @@ option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/obj)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/obj)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/obj)
-
-file(GLOB SRC_FILES_PY "src/*_py.cpp")
 
 file(GLOB SRC_FILES "src/*.cpp")
 set(SRC_STATIC ${SRC_FILES})
