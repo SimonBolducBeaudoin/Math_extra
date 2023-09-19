@@ -1,7 +1,3 @@
-# Should be compatible with unix and 
-# windows using cygwin and crosscompiling using mingw
-# also don't forget to edit config.cmake     
-
 set(PROJECT_NAME Math_extra)                    
 set(LIB_NAME math_extra)                        
 set(EXTERNAL_INCLUDES )
