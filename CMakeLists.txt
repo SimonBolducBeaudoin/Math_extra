@@ -47,3 +47,6 @@ include_directories(${EXTERNAL_INCLUDES})
 set_target_properties(${LIB_NAME} PROPERTIES PREFIX "${SHARED_LIB_PREFIX}")
 target_link_libraries(${LIB_NAME} ${LINKS})
 
+message(STATUS "Installing Math_extra")
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/obj/ DESTINATION ${PROJECT_SOURCE_DIR}/ FILES_MATCHING PATTERN "*.a")
+
