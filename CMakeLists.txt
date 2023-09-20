@@ -1,4 +1,4 @@
-set(PROJECT_NAME Math_extra)                    
+    set(PROJECT_NAME Math_extra)                    
 set(LIB_NAME math_extra)                        
 set(EXTERNAL_INCLUDES )
 set(STATIC_LINKS ) 
@@ -47,6 +47,13 @@ include_directories(${EXTERNAL_INCLUDES})
 set_target_properties(${LIB_NAME} PROPERTIES PREFIX "${SHARED_LIB_PREFIX}")
 target_link_libraries(${LIB_NAME} ${LINKS})
 
+# Installing and Uninstall
 message(STATUS "Installing Math_extra")
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/obj/ DESTINATION ${PROJECT_SOURCE_DIR}/ FILES_MATCHING PATTERN "*.a")
+set(DIR ${PROJECT_SOURCE_DIR}/obj/) 
+set(INSTALL_DIR ${PROJECT_SOURCE_DIR}) 
+install(DIRECTORY ${DIR} DESTINATION ${INSTALL_DIR} FILES_MATCHING PATTERN "*.a")
 
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/uninstall.cmake.in" "${CMAKE_CURRENT_BINARY_DIR}/uninstall.cmake" IMMEDIATE @ONLY)
+
+add_custom_target(uninstall
+  COMMAND ${CMAKE_COMMAND} -P "${CMAKE_CURRENT_BINARY_DIR}/uninstall.cmake")
