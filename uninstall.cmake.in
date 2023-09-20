@@ -1,0 +1,1 @@
+file(REMOVE @INSTALL_DIR@/math_extra.a)
