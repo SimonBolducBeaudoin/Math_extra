@@ -1,8 +1,8 @@
 #!/bin/env/python
 #! -*- coding: utf-8 -*-
-from numba import njit
+import numba as _nb
 
-@njit
+@_nb.njit
 def NewtonCotes11( f ,lower_bound=0,upper_bound=1,N=1000):
 	h = (upper_bound-lower_bound)/(10*N);
 	I_1 = 0
