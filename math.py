@@ -17,6 +17,16 @@ def ifourier_transform(F,dt,n):
     irfft = _np.fft.irfft
     shift = _np.fft.fftshift
     return (1.0/dt)*shift(irfft(F,n=n))
+    
+def central_derivative_3points(dx,y):
+    """
+    bigO dx**2
+    """
+    out = _np.zeros(y.shape)
+    out[...,1:-1] = ( -y[...,:-2] + y[...,2:]  )/(2.*dx)
+    out[...,0] = (y[...,1]-y[...,0])/dx
+    out[...,-1]= (y[...,-1]-y[...,-2])/dx
+    return out
 
 #########################
 # Central limit theorem #
