@@ -61,15 +61,6 @@ def dydx_centered_3pnts(x,y):
 ##########
 # FIX dx #
 ##########
-def central_derivative_3points(dx,y):
-    """
-    bigO dx**2
-    """
-    out = _np.zeros(y.shape)
-    out[...,1:-1] = ( -y[...,:-2] + y[...,2:]  )/(2.*dx)
-    out[...,0] = (y[...,1]-y[...,0])/dx
-    out[...,-1]= (y[...,-1]-y[...,-2])/dx
-    return out
 
 def central_derivative_9points(dx,y):
     """
