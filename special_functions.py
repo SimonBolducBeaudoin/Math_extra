@@ -4,7 +4,7 @@
 import numpy as _np
 import numba as _nb
 
-from integrate import NewtonCotes11
+from .integrate import NewtonCotes11
 
 @_nb.vectorize([_nb.float64(_nb.float64,_nb.float64,_nb.float64,_nb.float64,_nb.float64)])
 def _Tukey(x,x_1,x_2,x_3,x_4):
