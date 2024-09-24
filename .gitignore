@@ -35,3 +35,4 @@ build/
 
 *.pyc
 __pycache__/
+*.bak
