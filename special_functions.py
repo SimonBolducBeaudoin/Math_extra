@@ -1,6 +1,8 @@
 #!/bin/env/python
 #! -*- coding: utf-8 -*-
 
+from __future__ import division
+from past.utils import old_div
 import numpy as _np
 import numba as _nb
 
@@ -9,11 +11,11 @@ from .integrate import NewtonCotes11
 @_nb.vectorize([_nb.float64(_nb.float64,_nb.float64,_nb.float64,_nb.float64,_nb.float64)])
 def _Tukey(x,x_1,x_2,x_3,x_4):
     if (x_1<=x) and (x < x_2) :
-        return 0.5 - 0.5*_np.cos( _np.pi*(x-x_1)/(x_2-x_1) )
+        return 0.5 - 0.5*_np.cos( old_div(_np.pi*(x-x_1),(x_2-x_1)) )
     elif ( (x_2<=x) and (x < x_3) ) :
         return 1.0 
     elif ( (x_3<=x) and (x < x_4) ) :
-        return 0.5 - 0.5*_np.cos( _np.pi*(x_4-x)/(x_4-x_3) );
+        return 0.5 - 0.5*_np.cos( old_div(_np.pi*(x_4-x),(x_4-x_3)) );
     else :
         return 0.0 
 @_nb.guvectorize([(_nb.float64[:],_nb.float64,_nb.float64,_nb.float64,_nb.float64,_nb.float64[:])], '(n),(),(),(),()->(n)')
