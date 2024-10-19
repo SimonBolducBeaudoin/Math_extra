@@ -4,7 +4,7 @@ import numba as _nb
 
 @_nb.njit
 def NewtonCotes11( f ,lower_bound=0,upper_bound=1,N=1000):
-	h = (upper_bound-lower_bound)//(10*N);
+	h = (upper_bound-lower_bound)/(10*N)
 	I_1 = 0
 	I_2 = 0
 	I_3 = 0
